@@ -89,7 +89,18 @@ def main():
                             (200 , 200),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             2,
-                            (0 , 0, 255),
+                            (0, 0, 255),
+                            4
+                        )
+
+                    if middle_up and index_up and ring_up and pinky_up:
+                        cv2.putText(
+                            img,
+                            "FOUR",
+                            (200,200),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            2,
+                            (0, 0, 255),
                             4
                         )
 
