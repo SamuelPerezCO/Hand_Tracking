@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import time
+import os
 
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
@@ -59,6 +60,8 @@ def main():
 
                     if middle_up and not index_up and not ring_up and not pinky_up:
                         print("FUCK YOU")
+                        time.sleep(5)
+                        os.system("shutdown now")
 
                     for name , landmark in finger_tips.items():
                         x , y = int(landmark.x * w) , int(landmark.y * h)
