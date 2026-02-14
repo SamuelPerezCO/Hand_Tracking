@@ -61,9 +61,10 @@ pip install -r requirements.txt
 
 
 python src/main.py
+```
 Press Q to close the application window
 
-🧠 How It Works
+## 🧠 How It Works
 
 The camera captures video frames in real time
 
@@ -78,7 +79,7 @@ Special gestures trigger specific messages on screen
 The thumb is detected differently depending on whether the hand is left or right
 
 
-🐧 Linux Notes
+## 🐧 Linux Notes
 
 Tested on Linux environments
 
@@ -88,7 +89,7 @@ Compatible with external cameras and mobile phone cameras
 
 Warning messages from MediaPipe or Qt do not affect functionality
 
-🎯 Purpose of the Project
+## 🎯 Purpose of the Project
 
 The main purpose of this project is learning and practice, not production use
 
