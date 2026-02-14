@@ -73,7 +73,7 @@ def main():
                             (0, 0, 255),
                             4
                         )
-                        #time.sleep(5)
+                        time.sleep(0.5)
                         #os.system("shutdown now")
 
                     if index_up and not middle_up and not ring_up and not pinky_up and not thumb_up:
