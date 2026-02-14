@@ -57,12 +57,13 @@ def main():
                     index_up = lm[8].y < lm[6].y
                     ring_up = lm[16].y < lm[14].y
                     pinky_up = lm[20].y < lm[18].y
+                    thumb_up = lm[4].x < lm[2].x
 
-                    if middle_up and not index_up and not ring_up and not pinky_up:
+                    if middle_up and not index_up and not ring_up and not pinky_up and not thumb_up:
                         cv2.putText(
                             img,
                             "FUCK YOU",
-                            (200, 200),
+                            (w - 400, 150),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             2,
                             (0, 0, 255),
@@ -71,33 +72,44 @@ def main():
                         #time.sleep(5)
                         #os.system("shutdown now")
 
-                    if middle_up and index_up and not ring_up and not pinky_up:
+                    if index_up and not middle_up and not ring_up and not pinky_up and not thumb_up:
+                        cv2.putText(
+                            img,
+                            "ONE",
+                            (w - 400, 150),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            2,
+                            (0, 0, 255),
+                            4
+                        )
+
+                    if middle_up and index_up and not ring_up and not pinky_up and not thumb_up:
                         cv2.putText(
                             img,
                             "TWO",
-                            (200 , 200),
+                            (w - 400, 150),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             2,
                             (0, 0, 255),
                             4
                         )
 
-                    if middle_up and index_up  and ring_up and not pinky_up:
+                    if middle_up and index_up  and ring_up and not pinky_up and not thumb_up:
                         cv2.putText(
                             img,
                             "THREE",
-                            (200 , 200),
+                            (w - 400, 150),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             2,
                             (0, 0, 255),
                             4
                         )
 
-                    if middle_up and index_up and ring_up and pinky_up:
+                    if middle_up and index_up and ring_up and pinky_up and not thumb_up:
                         cv2.putText(
                             img,
                             "FOUR",
-                            (200,200),
+                            (w - 400, 150),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             2,
                             (0, 0, 255),
