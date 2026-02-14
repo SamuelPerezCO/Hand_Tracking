@@ -10,6 +10,10 @@ cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
 cap.set(4, 720)
 
+cv2.namedWindow("Image", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("Image", 800, 450)
+
+
 
 def main():
     with mp_hands.Hands(
