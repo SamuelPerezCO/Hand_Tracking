@@ -59,9 +59,40 @@ def main():
                     pinky_up = lm[20].y < lm[18].y
 
                     if middle_up and not index_up and not ring_up and not pinky_up:
-                        print("FUCK YOU")
-                        time.sleep(5)
-                        os.system("shutdown now")
+                        cv2.putText(
+                            img,
+                            "FUCK YOU",
+                            (200, 200),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            2,
+                            (0, 0, 255),
+                            4
+                        )
+                        #time.sleep(5)
+                        #os.system("shutdown now")
+
+                    if middle_up and index_up and not ring_up and not pinky_up:
+                        cv2.putText(
+                            img,
+                            "TWO",
+                            (200 , 200),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            2,
+                            (0, 0, 255),
+                            4
+                        )
+
+                    if middle_up and index_up  and ring_up and not pinky_up:
+                        cv2.putText(
+                            img,
+                            "THREE",
+                            (200 , 200),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            2,
+                            (0 , 0, 255),
+                            4
+                        )
+
 
                     for name , landmark in finger_tips.items():
                         x , y = int(landmark.x * w) , int(landmark.y * h)
