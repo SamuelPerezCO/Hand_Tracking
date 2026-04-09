@@ -1,110 +1,100 @@
-# Hand Tracking with Python
+# Hand Gesture Detector
 
-A computer vision project to track hand movements in real time using Python
-
-This project was created as a **personal review and practice** to reinforce previously learned concepts and improve logical thinking through hands-on development
+A real-time hand gesture recognition app using **OpenCV** and **MediaPipe**. It detects finger positions via webcam and identifies gestures like counting (1–5) and a special "middle finger" gesture.
 
 ---
 
-## 📌 Features
+## Features
 
-- Real-time hand detection using a camera
-- Hand landmarks visualization
-- Finger state detection (up / down)
-- Finger counting from 1 to 5
-- Special gesture detection (middle finger only)
-- Text rendering on screen based on gestures
-- Works with webcam or mobile phone camera
-- Optimized for Linux systems
-
----
-
-## 🛠 Technologies Used
-
-- Python 3
-- OpenCV
-- MediaPipe
+- Real-time hand landmark detection via webcam
+- Recognizes the following gestures:
+  - **ONE** – Index finger up
+  - **TWO** – Index + Middle fingers up
+  - **THREE** – Index + Middle + Ring fingers up (or Middle + Ring + Pinky)
+  - **FOUR** – All fingers up except thumb
+  - **FIVE** – All fingers up including thumb
+  - **FUCK YOU** – Middle finger only (+ optional system shutdown 😅)
+- Displays fingertip labels and landmark circles on the video feed
+- Mirror (flipped) view for a more natural experience
 
 ---
 
-## 📂 Project Structure
+## Requirements
 
-Hand_Tracking/
-│
-├─ src/
-│ ├─ main.py
-│ ├─ hand_tracking.py
-│ └─ open_webcam.py
-│
-├─ venv/
-├─ .gitignore
-├─ requirements.txt
-└─ README.md
+- Python 3.8+
+- Webcam
 
-
----
-
-## ⚙️ Installation
-
-Clone the repository:
+### Dependencies
 
 ```bash
-git clone <https://github.com/SamuelPerezCO/Hand_Tracking>
-cd Hand_Tracking
-
-
-python3 -m venv venv
-source venv/bin/activate
-
-
-pip install -r requirements.txt
-
-
-python src/main.py
+pip install opencv-python mediapipe
 ```
-Press Q to close the application window
 
-## 🧠 How It Works
+---
 
-The camera captures video frames in real time
+## Installation
 
-MediaPipe detects the hand and extracts landmarks
+```bash
+git clone https://github.com/your-username/hand-gesture-detector.git
+cd hand-gesture-detector
+pip install opencv-python mediapipe
+```
 
-Each finger is analyzed based on landmark positions
+---
 
-Fingers are counted by checking which ones are raised
+## Usage
 
-Special gestures trigger specific messages on screen
+```bash
+python main.py
+```
 
-The thumb is detected differently depending on whether the hand is left or right
+- A window named **"Image"** will open showing the webcam feed.
+- Hold your hand in front of the camera to trigger gesture detection.
+- Press **`q`** to quit.
 
+---
 
-## 🐧 Linux Notes
+## Project Structure
 
-Tested on Linux environments
+```
+hand-gesture-detector/
+│
+└── main.py       # Main script
+```
 
-Uses OpenCV window rendering
+---
 
-Compatible with external cameras and mobile phone cameras
+## How It Works
 
-Warning messages from MediaPipe or Qt do not affect functionality
+1. Captures frames from the webcam using OpenCV.
+2. Flips the frame horizontally for a mirror view.
+3. Passes the frame to MediaPipe Hands for landmark detection.
+4. Evaluates the Y (and X for the thumb) coordinates of each fingertip relative to its base joint to determine whether each finger is up or down.
+5. Matches the combination of raised fingers to a known gesture and overlays the label on screen.
 
-## 🎯 Purpose of the Project
+---
 
-The main purpose of this project is learning and practice, not production use
+## Configuration
 
-It helps reinforce:
+You can tweak the following parameters inside `main.py`:
 
-Python fundamentals
+| Parameter | Default | Description |
+|---|---|---|
+| `max_num_hands` | `1` | Maximum number of hands to detect |
+| `min_detection_confidence` | `0.7` | Minimum confidence for initial detection |
+| `min_tracking_confidence` | `0.7` | Minimum confidence for tracking |
+| Camera width | `1280` | Webcam capture width |
+| Camera height | `720` | Webcam capture height |
 
-Logical thinking
+---
 
-Computer vision basics
+## Notes
 
-Hand landmark analysis
+- The script contains a commented-out `os.system("shutdown now")` line triggered by the middle finger gesture. Uncomment at your own risk.
+- Thumb detection is based on the X axis and may behave differently depending on which hand is used. Currently optimized for the **right hand**.
 
-Project organization
+---
 
-Virtual environments
+## License
 
-Git and GitHub workflow
+MIT License
